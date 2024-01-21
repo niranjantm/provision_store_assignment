@@ -1,0 +1,8 @@
+.customColor {
+    background: rgb(195,238,174);
+background: radial-gradient(circle, rgba(195,238,174,1) 17%, rgba(167,232,206,1) 95%);
+}
+.customBody{
+    background: rgb(45,133,253);
+background: linear-gradient(0deg, rgba(45,133,253,1) 0%, rgba(18,40,38,1) 100%);
+}

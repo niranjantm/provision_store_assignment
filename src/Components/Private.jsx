@@ -13,7 +13,7 @@ function Private() {
   }
   return (
     <div className="w-full">
-      {user.username ? (
+      {user? (
         <div className="w-full max-md:w-fit">
             <header className="h-[100px] customColor flex justify-between items-center shadow-lg shadow-gray-500 ">
                 <img src="http://www.hindigraphics.in/wp-content/uploads/2019/01/pro.png" className="max-w-[150px]"></img>

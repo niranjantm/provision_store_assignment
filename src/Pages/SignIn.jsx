@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 import { LoginContext } from "../Components/Context";
+import { useNavigate } from "react-router-dom";
 import sha256 from "sha256"
 
 
 function SignIn() {
-  const { setUser } = useContext(LoginContext);
+  const {user,setUser } = useContext(LoginContext);
   const [data,setData] = useState({username:"",password:""});
-  const [error,setError] = useState(false)
-  console.log(data)
+  const [error,setError] = useState("")
+  const navigate = useNavigate();
+  
   
   const handleChange = (e) => {
     setData({...data,[e.target.name]:e.target.value})
-    setError(false)
+    setError("")
   };
 
   function validatePassword(password) {
@@ -25,7 +27,7 @@ function SignIn() {
     e.preventDefault();
     
     if(validatePassword(data.password)===false){
-        setError(true)
+        setError("Password must be 8 characters long, must contain one uppercase letter, one number and special character")
     }else{
         try{
             const formData = new FormData();
@@ -40,15 +42,17 @@ function SignIn() {
                 body:formData
             })
             const res = await request.json()
-            console.log(res)
-            if(res.response.user_name){
+            if(res.response && res.response.user_name){
                 setUser({username:res.response.user_name,access_token:res.response.access_token})
+                navigate("/products")
+            }else{
+              setError("Invalid Credentials")
             }
         }
         catch(error){
             console.error(error);
         }
-        setError(false)
+
       };
     }
     
@@ -81,7 +85,7 @@ function SignIn() {
           name="password"
           placeholder="password"
         ></input>
-        {error && <p className="text-sm text-red-500 text-center">Password must be 8 characters long, must contain one uppercase letter, one number and special character </p>}
+        {error && <p className="text-sm text-red-500 text-center">{error}</p>}
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Sign In
         </button>

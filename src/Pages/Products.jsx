@@ -71,7 +71,7 @@ function Products() {
     <div className="flex flex-wrap gap-3 justify-center  py-10">
       {products.map((item, index) => {
         return (
-          <div className="w-[350px] h-[400px] bg-sky-300 rounded-lg shadow-lg shadow-gray-400 p-2 flex flex-col justify-evenly items-center">
+          <div key={index} className="w-[350px] h-[400px] bg-sky-300 rounded-lg shadow-lg shadow-gray-400 p-2 flex flex-col justify-evenly items-center">
             <img
               src={item.productCategory.productCategoryImage}
               className="w-[110px]"

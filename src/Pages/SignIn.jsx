@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { LoginContext } from "../Components/Context";
 import { useNavigate } from "react-router-dom";
 import sha256 from "sha256"
+import logo from "../assets/provision_store_logo.png"
 
 
 function SignIn() {
@@ -62,7 +63,7 @@ function SignIn() {
       <form className="flex flex-col w-[500px] gap-4" onSubmit={handleSubmit}>
         <div className="w-full flex justify-center">
           <img
-            src="http://www.hindigraphics.in/wp-content/uploads/2019/01/pro.png"
+            src={logo}
             className="max-w-[300px]"
           ></img>
         </div>

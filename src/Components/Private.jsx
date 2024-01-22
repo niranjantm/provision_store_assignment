@@ -3,6 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import { useContext } from "react";
 import { LoginContext } from "./Context";
 import SignIn from "../Pages/SignIn";
+import logo from "../assets/provision_store_logo.png"
 
 
 
@@ -16,7 +17,7 @@ function Private() {
       {user? (
         <div className="w-full max-md:w-fit">
             <header className="h-[100px] customColor flex justify-between items-center shadow-lg shadow-gray-500 ">
-                <img src="http://www.hindigraphics.in/wp-content/uploads/2019/01/pro.png" className="max-w-[150px]"></img>
+                <img src={logo} className="max-w-[150px]"></img>
                 
                 <div className="flex gap-3 px-5">
                 <NavLink to="/products" className={({isActive})=>{
